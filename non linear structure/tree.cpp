@@ -50,8 +50,38 @@ class Tree{
 
 
      }
-     void inorder(){}
-     bool search(){}
+     void inorder(Node* curr_node){
+         if(curr_node==NULL){
+            return;
+         }
+         inorder(curr_node->left);
+         cout<<curr_node->data<<" ";
+         inorder(curr_node->right);
+
+     }
+    void preorder(Node* curr_node){
+         if(curr_node==NULL){
+            return;
+         }
+         cout<<curr_node->data<<" ";
+         preorder(curr_node->left);
+         preorder(curr_node->right);
+
+     }
+
+     void postorder(Node* curr_node){
+        if(curr_node==NULL){
+            return;
+        }
+        postorder(curr_node->left);
+        postorder(curr_node->right);
+        cout<<curr_node->data<<" ";
+
+     }
+
+     bool search(int key){
+        
+     }
      void levelOrder(){
         if(root==NULL){
           return;
@@ -85,9 +115,14 @@ int main(){
     cout<< "Level Order  ";
     t.levelOrder();
     
-   // cout<<"\n Inorder";
-    t.inorder();
+    cout<<"\n Inorder  ";
+    t.inorder(t.root);
 
+   cout<<"\n Preorder  ";
+    t.preorder(t.root);
+
+   cout<<"\n Postorder  ";
+    t.postorder(t.root);
 
 
 
