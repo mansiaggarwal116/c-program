@@ -69,6 +69,7 @@ class Stack{
         return min;
     }
 
+
 };
 
 int main(){

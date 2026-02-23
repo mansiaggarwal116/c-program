@@ -5,8 +5,9 @@ class Node{
        int data;
        Node* next;
        
+       //constructor
        Node(int val){
-        this->data = data;
+        this->data = val;
         this->next = NULL;
        }
 
@@ -15,7 +16,8 @@ class Node{
 class LinkedList{
     public:
      Node* head;
-
+    
+    //constructor
      LinkedList(){
           head = NULL;
      }
@@ -36,6 +38,58 @@ class LinkedList{
         }
         cout<<"NULL"<<endl;
      }
+
+     bool search(int key){
+        Node* temp = head;
+        while(temp!=NULL){
+            if(temp->data == key){
+                return true;
+            }
+            temp = temp->next;
+        }
+        return false;
+
+     }
+     void insertAtLast(int val){
+         Node* newNode = new Node(val);
+            if(head==NULL){
+                head = newNode;
+                return;
+            }
+         Node* temp=head;
+         
+         while(temp->next!=NULL){
+            temp=temp->next;
+         }
+         temp->next = newNode;
+         return;
+   }
+   void deleteAtLast(){
+        if(head==NULL){
+            return;
+        }
+        if (head->next==NULL){
+            head=NULL;
+            return;
+        }
+        Node* temp = head;
+        while(temp->next->next!=NULL){
+            temp=temp->next;
+        }
+        temp->next=NULL;
+   }
+
+   void insertAtPosition(int val, int pos){
+      Node* newNode = new Node(val);
+      Node* temp = head;
+      int count = 1;
+      while(count!=pos-1){
+        temp = temp->next;
+        count++;
+      }
+      newNode->next = temp->next;
+      temp->next = newNode;
+   }
 };
 
 int main(){
@@ -43,5 +97,12 @@ int main(){
     list.addAtBegin(10);
     list.addAtBegin(20);
     list.addAtBegin(30);
+    list.printList();
+    list.search(10);
+    list.insertAtLast(40);
+    list.printList();
+    list.deleteAtLast();
+    list.printList();
+    list.insertAtPosition(25,3);
     list.printList();
 }
