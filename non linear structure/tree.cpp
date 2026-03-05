@@ -80,6 +80,26 @@ class Tree{
      }
 
      bool search(int key){
+        if(root==NULL){
+            return false;
+        }
+        queue<Node*> q;
+        q.push(root);
+        while(!q.empty()){
+            Node* temp=q.front();
+            q.pop();
+            if(temp->data==key){
+                return true;
+            }
+            if(temp->left !=NULL)
+                q.push(temp->left);
+
+            if(temp->right !=NULL)
+                q.push(temp->right);
+            
+        }
+        return false;
+        
         
      }
      void levelOrder(){
